@@ -28,7 +28,7 @@ def gen_rand_user(user_id):
     age = random.randint(16,100)
     def n(): return random.randint(0,9)
     tlf = f"6{n()}{n()}{n()}{n()}{n()}{n()}{n()}{n()}"
-    return Usuario(dni, name, last_name, email, age, tlf)
+    return User(dni, name, last_name, email, age, tlf)
 
 
 def add_user_db(user):
