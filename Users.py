@@ -7,6 +7,7 @@ class User:
         self.email = email
         self.age = age
         self.tlf = tlf
+        self.requests = []
 
     def as_json(self):
         return {
@@ -15,7 +16,8 @@ class User:
             "email": self.email,
             "last_name": self.last_name,
             "name": self.name,
-            "tlf": self.tlf
+            "tlf": self.tlf,
+            "requests": self.requests
         }
 
 
@@ -33,15 +35,10 @@ def gen_rand_user(user_id):
 
 def add_user_db(user):
     import requests as req
-    url = "http://127.0.0.1:8000/movility/usuarios/"
+    url = "http://127.0.0.1:8000/movility/users/"
     data = user.as_json()
     response = req.post(url, data=data)
     if response.status_code == 201:
         return True
     else:
         return False
-
-
-# TODO: check last user id in DB
-new_user = gen_rand_user(1)
-add_user_db(new_user)
